@@ -211,8 +211,7 @@ x = (0.2,\; 0.6),\qquad \|Ax - b\| = 0.
 
 **运行截图：**
 
-![方阵系统运行结果](example/square_result.png)
-<img src="example/square_result.png" width="60%" style="border:1px solid #ccc;">
+<img src="example/square_result.png" width="30%" style="border:1px solid #ccc;">
 
 ---
 
@@ -239,8 +238,7 @@ x = (0.6667,\; 0.5),
 
 **运行截图：**
 
-![超定系统运行结果](example/overdetermined_result.png)
-<img src="example/overdetermined_result.png" width="60%" style="border:1px solid #ccc;">
+<img src="example/overdetermined_result.png" width="30%" style="border:1px solid #ccc;">
 
 ---
 
@@ -249,8 +247,7 @@ x = (0.6667,\; 0.5),
 程序自动返回满足最小范数条件的解。
 **运行截图：**
 
-![欠定系统运行结果](example/underdetermined_result.png)
-<img src="example/underdetermined_result.png" width="60%" style="border:1px solid #ccc;">
+<img src="example/underdetermined_result.png" width="30%" style="border:1px solid #ccc;">
 
 ---
 
