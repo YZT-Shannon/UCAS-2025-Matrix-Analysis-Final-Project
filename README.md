@@ -238,3 +238,124 @@ x=(0.6667,\ 0.5), \quad |Ax-b|\approx 0.4082.
 * 对超定与欠定情形的处理
 * 一个综合可执行程序
 * 自动化示例验证脚本
+
+
+
+# QR 分解与求解 Ax = b（Householder 与 Givens 实现）
+
+本项目实现了矩阵正交分解的两种经典方法——**Householder Reflection** 与 **Givens Rotation**，并基于 QR 分解构建了求解线性方程组 (Ax = b) 的统一框架。所有核心算法均按照课堂讲授的数学原理手写实现，**未调用任何现成的 QR 分解库函数**。
+
+项目包含一个综合可执行程序 `qrsolver.py`，可根据用户选择执行不同分解方法，并自动完成 QR 分解、求解方程组、判断是否存在精确解等功能。以及一个测试用例 `run_examples.py`。
+
+---
+
+## 目录
+
+(略，与之前一致)
+
+---
+
+## 实验目的
+
+(略)
+
+---
+
+## 算法原理概述
+
+### 1. Householder 反射
+
+Householder 反射通过如下形式的反射矩阵对子块进行整体消元：
+
+```math
+H = I - 2\,\frac{vv^T}{v^T v}
+```
+
+通过选择适当的向量 (v)，一次反射即可将矩阵某列下方全部元素置零。逐列应用反射矩阵即可得到上三角矩阵 (R)。
+
+---
+
+### 2. Givens 旋转
+
+Givens 旋转通过二维旋转矩阵对矩阵单个元素进行消元：
+
+```math
+G =
+\begin{bmatrix}
+c & -s \\
+s & c
+\end{bmatrix},
+\qquad
+r=\sqrt{a^2+b^2},\quad 
+c=\frac{a}{r},\quad 
+s=-\frac{b}{r}.
+```
+
+---
+
+### 3. QR 分解与线性方程组求解
+
+QR 分解满足：
+
+```math
+A = QR,\qquad Q^T Q = I.
+```
+
+代入方程：
+
+```math
+Ax = b \;\Rightarrow\; Rx = Q^T b.
+```
+
+
+最小范数解公式：
+
+```math
+x = A^T (AA^T)^{-1} b
+```
+
+
+### 1. 方阵（有精确解）
+
+```math
+A =
+\begin{bmatrix}
+2 & 1 \\
+1 & 3
+\end{bmatrix},
+\qquad
+b =
+\begin{bmatrix}
+1 \\
+2
+\end{bmatrix}
+```
+
+结果：
+
+```math
+x = (0.2,\; 0.6),\qquad \|Ax - b\| = 0.
+```
+
+---
+
+### 2. 超定系统（最小二乘）
+
+```math
+A =
+\begin{bmatrix}
+1 & 1 \\
+1 & 2 \\
+1 & 3
+\end{bmatrix},
+\qquad
+b = (1,\;2,\;2)
+```
+
+结果：
+
+```math
+x = (0.6667,\; 0.5), 
+\qquad
+\|Ax - b\| \approx 0.4082.
+```
