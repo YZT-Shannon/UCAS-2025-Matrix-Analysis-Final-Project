@@ -245,6 +245,7 @@ x = (0.6667,\; 0.5),
 ### 3. 欠定系统（最小范数解）
 
 程序自动返回满足最小范数条件的解。
+
 **运行截图：**
 
 <img src="example/underdetermined_result.png" width="30%" style="border:1px solid #ccc;">
